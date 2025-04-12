@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/Product");
+const Producto = require("../models/Producto");
 const multer = require("multer");
 const path = require("path");
 
@@ -14,22 +14,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.get("/", async (req, res) => {
-  const products = await Product.find();
-  res.json(products);
+  const productos = await Producto.find();
+  res.json(productos);
 });
 
 router.post("/", upload.single("image"), async (req, res) => {
   try {
-    const { name, description, price, stock, category } = req.body;
-    const image = req.file ? req.file.filename : "";
+    const { nombre, descripcion, precio, stock, categoria } = req.body;
+    const imagen = req.file ? req.file.filename : "";
 
     const nuevoProducto = new Producto({
-      name,
-      description,
-      price,
+      nombre,
+      descripcion,
+      precio,
       stock,
-      category,
-      image
+      categoria,
+      imagen
     });
 
     await nuevoProducto.save();

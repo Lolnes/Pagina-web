@@ -6,11 +6,11 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 app.use("/uploads", express.static("uploads"));
 
-
-const productsRoute = require("./routes/products");
-app.use("/productos", productsRoute);
+const productosRoute = require("./routes/productos");
+app.use("/productos", productosRoute);
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,

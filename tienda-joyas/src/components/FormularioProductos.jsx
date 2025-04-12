@@ -2,11 +2,11 @@ import { useState } from "react";
 
 function FormularioProducto() {
     const [producto, setProducto] = useState({
-      name: "",
-      description: "",
-      price: "",
+      nombre: "",
+      descripcion: "",
+      precio: "",
       stock: "",
-      category: "",
+      categoria: "",
     });
   
     const [imagen, setImagen] = useState(null);
@@ -27,7 +27,7 @@ function FormularioProducto() {
         formData.append(key, producto[key]);
       });
       if (imagen) {
-        formData.append("image", imagen);
+        formData.append("imagen", imagen);
       }
   
       fetch("http://localhost:3001/productos", {
@@ -38,11 +38,11 @@ function FormularioProducto() {
         .then((data) => {
           alert("Producto añadido");
           setProducto({
-            name: "",
-            description: "",
-            price: "",
+            nombre: "",
+            descripcion: "",
+            precio: "",
             stock: "",
-            category: "",
+            categoria: "",
           });
           setImagen(null);
         })
@@ -51,15 +51,16 @@ function FormularioProducto() {
   
     return (
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <input type="text" name="name" onChange={handleChange} value={producto.name} placeholder="Nombre" required />
-        <textarea name="description" onChange={handleChange} value={producto.description} placeholder="Descripción" required />
-        <input type="number" name="price" onChange={handleChange} value={producto.price} placeholder="Precio" required />
+        <input type="text" name="nombre" onChange={handleChange} value={producto.name} placeholder="Nombre" required />
+        <textarea name="descripcion" onChange={handleChange} value={producto.description} placeholder="Descripción" required />
+        <input type="number" name="precio" onChange={handleChange} value={producto.price} placeholder="Precio" required />
         <input type="number" name="stock" onChange={handleChange} value={producto.stock} placeholder="Stock" required />
-        <input type="text" name="category" onChange={handleChange} value={producto.category} placeholder="Categoría" required />
-        <input type="file" name="image" onChange={handleImageChange} accept="image/*" required />
+        <input type="text" name="categoria" onChange={handleChange} value={producto.category} placeholder="Categoría" required />
+        <input type="file" name="imagen" onChange={handleImageChange} accept="imagen/*" required />
   
         <button type="submit">Guardar producto</button>
       </form>
     );
   }
-  
+
+  export default FormularioProducto;

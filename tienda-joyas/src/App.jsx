@@ -1,14 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import FormularioProducto from './Components/FormularioProductos'
+import FormularioProductos from "./components/FormularioProductos";
 
 function App() {
   return (
-    <div>
-      <h1>Panel de Administración</h1>
-      <FormularioProducto />
+    <div className="App">
+      <h1>Tienda de Joyas</h1>
+      <FormularioProductos />
     </div>
   );
 }
